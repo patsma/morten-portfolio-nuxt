@@ -1,0 +1,243 @@
+/* IBM Plex Sans JP font faces */
+@font-face {
+  font-family: "IBM Plex Sans JP";
+  src: url("assets/fonts/ibmplexsansjp-bold.ttf") format("truetype");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "IBM Plex Sans JP";
+  src: url("assets/fonts/ibmplexsansjp-extralight.ttf") format("truetype");
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "IBM Plex Sans JP";
+  src: url("assets/fonts/ibmplexsansjp-light.ttf") format("truetype");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "IBM Plex Sans JP";
+  src: url("assets/fonts/ibmplexsansjp-medium.ttf") format("truetype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "IBM Plex Sans JP";
+  src: url("assets/fonts/ibmplexsansjp-regular.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "IBM Plex Sans JP";
+  src: url("assets/fonts/ibmplexsansjp-semibold.ttf") format("truetype");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "IBM Plex Sans JP";
+  src: url("assets/fonts/ibmplexsansjp-thin.ttf") format("truetype");
+  font-weight: 100;
+}
+
+/* Peiko font faces */
+@font-face {
+  font-family: "Peiko";
+  src: url("assets/fonts/ppeiko-black.ttf") format("truetype");
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: "Peiko";
+  src: url("assets/fonts/ppeiko-blackitalic.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Peiko";
+  src: url("assets/fonts/ppeiko-heavy.ttf") format("truetype");
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: "Peiko";
+  src: url("assets/fonts/ppeiko-light.ttf") format("truetype");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Peiko";
+  src: url("assets/fonts/ppeiko-lightitalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Peiko";
+  src: url("assets/fonts/ppeiko-medium.ttf") format("truetype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Peiko";
+  src: url("assets/fonts/ppeiko-mediumitalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Peiko";
+  src: url("assets/fonts/ppeiko-regular.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Peiko";
+  src: url("assets/fonts/ppeiko-thin.ttf") format("truetype");
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: "Peiko";
+  src: url("assets/fonts/ppeiko-thinitalic.ttf") format("truetype");
+  font-weight: 100;
+  font-style: italic;
+}
+
+/* IBM Plex Sans JP font classes */
+.ibmplex-700 {
+  font-family: "IBM Plex Sans JP", sans-serif;
+  font-weight: 700;
+}
+
+.ibmplex-200 {
+  font-family: "IBM Plex Sans JP", sans-serif;
+  font-weight: 200;
+}
+
+.ibmplex-300 {
+  font-family: "IBM Plex Sans JP", sans-serif;
+  font-weight: 300;
+}
+
+.ibmplex-500 {
+  font-family: "IBM Plex Sans JP", sans-serif;
+  font-weight: 500;
+}
+
+.ibmplex-400 {
+  font-family: "IBM Plex Sans JP", sans-serif;
+  font-weight: 400;
+}
+
+.ibmplex-600 {
+  font-family: "IBM Plex Sans JP", sans-serif;
+  font-weight: 600;
+}
+
+.ibmplex-100 {
+  font-family: "IBM Plex Sans JP", sans-serif;
+  font-weight: 100;
+}
+
+/* Peiko font classes */
+.peiko-900 {
+  font-family: "Peiko", sans-serif;
+  font-weight: 900;
+}
+
+.peiko-italic-900 {
+  font-family: "Peiko", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+.peiko-800 {
+  font-family: "Peiko", sans-serif;
+  font-weight: 800;
+}
+
+.peiko-300 {
+  font-family: "Peiko", sans-serif;
+  font-weight: 300;
+}
+
+.peiko-italic-300 {
+  font-family: "Peiko", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.peiko-500 {
+  font-family: "Peiko", sans-serif;
+  font-weight: 500;
+}
+
+.peiko-italic-500 {
+  font-family: "Peiko", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.peiko-400 {
+  font-family: "Peiko", sans-serif;
+  font-weight: 400;
+}
+
+.peiko-100 {
+  font-family: "Peiko", sans-serif;
+  font-weight: 100;
+}
+
+.peiko-italic-100 {
+  font-family: "Peiko", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+/* Font size utility classes */
+.fs-mobile-h1 {
+  font-size: var(--font-mobile-h1);
+}
+
+.fs-mobile-h2 {
+  font-size: var(--font-mobile-h2);
+}
+
+.fs-mobile-h2-large {
+  font-size: var(--font-mobile-h2-large);
+}
+
+.fs-mobile-nav {
+  font-size: var(--font-mobile-nav);
+}
+
+.fs-laptop-h1 {
+  font-size: var(--font-laptop-h1);
+}
+
+.fs-laptop-h2 {
+  font-size: var(--font-laptop-h2);
+}
+
+.fs-laptop-h2-large {
+  font-size: var(--font-laptop-h2-large);
+}
+
+.fs-desktop-h1 {
+  font-size: var(--font-desktop-h1);
+}
+
+.fs-desktop-h2 {
+  font-size: var(--font-desktop-h2);
+}
+
+.fs-desktop-h2-large {
+  font-size: var(--font-desktop-h2-large);
+}
+
+.fs-desktop-nav {
+  font-size: var(--font-desktop-nav);
+}
