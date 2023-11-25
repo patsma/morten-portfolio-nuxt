@@ -17,6 +17,7 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
+    "gsap": "file:gsap-bonus.tgz",
     "sass": "^1.69.5"
   }
 }

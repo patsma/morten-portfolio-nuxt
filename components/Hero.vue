@@ -1,3 +1,6 @@
+<script setup>
+
+</script>
 <template>
   <section class="component component--hero grid h-[95vh] content-end pb-14" id="component-hero-01">
     <div class="col-span-12 col-start-1 col-end-13 grid grid-cols-12">
