@@ -76,16 +76,6 @@ export default function useTextEffect(selector) {
         effectsTimeline.timeScale(0.7);
     }
 
-
-    // onMounted(() => {
-    //     setupTextEffects();
-    // });
-    //
-    // onUnmounted(() => {
-    //     window.removeEventListener('resize', setupTextEffects);
-    // });
-
-
     const cleanup = () => {
         // Remove event listeners or any other cleanup logic
     };
