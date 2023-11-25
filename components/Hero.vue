@@ -1,11 +1,23 @@
 <script setup>
+import { onMounted, onUnmounted } from 'vue';
+import useTextEffect from '~/composables/useTextEffect';
+import gsap from "gsap";
+
+onMounted( () => {
+  const { setupTextEffects, cleanup, effectsTimeline } = useTextEffect('.js--text-animation-1');
+    setupTextEffects();
+    effectsTimeline.play();
+});
+
 
 </script>
+
+
 <template>
   <section class="component component--hero grid h-[95vh] content-end pb-14" id="component-hero-01">
     <div class="col-span-12 col-start-1 col-end-13 grid grid-cols-12">
       <div class="relative col-start-2 col-end-12 grid">
-        <h1 class="text-animation-1 peiko-100 text-shadow-1 text-4xl leading-[120%] tracking-tighter md:text-6xl">
+        <h1 class="js--text-animation-1 peiko-100 text-shadow-1 text-4xl leading-[120%] tracking-tighter md:text-6xl">
                     <span class="text-dark-40">
                       Welcome, I am
                       <span class="text-dark-100 peiko-300">Morten</span>
