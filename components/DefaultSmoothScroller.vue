@@ -1,9 +1,7 @@
 <template>
   <div class="smooth-wrapper">
     <div class="smooth-content">
-      <div class="main-grid grid">
         <slot>  </slot>
-      </div>
     </div>
   </div>
 
