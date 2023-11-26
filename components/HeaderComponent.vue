@@ -4,7 +4,8 @@
       <div class="nav__wrapper col-start-2 col-end-12 grid grid-flow-col items-center justify-between">
         <div class="nav__logo">
           <div class="ibmplex-400 grid gap-1">
-            <NuxtLink to="/" class="text-dark-100 text-xs leading-[100%] tracking-[-0.03125rem]">Morten Christensen</NuxtLink>
+            <NuxtLink to="/" class="text-dark-100 text-xs leading-[100%] tracking-[-0.03125rem]">Morten Christensen
+            </NuxtLink>
             <div class="nav__roles text-dark-40 js--text-slider-01 overflow-hidden text-xxs leading-[100%]">
               <ul>
                 <li>UX/UI Designer</li>
@@ -60,6 +61,17 @@
     </nav>
   </header>
 </template>
-<script setup lang="ts">
-import ThemeToggleSVG from "~/components/ThemeToggleSVG.vue";
+<script setup>
+import { onMounted } from 'vue';
+import useTextSlider from '~/composables/useTextSlider';
+
+const textSlider1 = useTextSlider('.js--text-slider-01 li');
+const textSlider2 = useTextSlider('.js--text-slider-02 li');
+const textSlider3 = useTextSlider('.js--text-slider-03 li');
+
+onMounted(() => {
+  textSlider1.play();
+  textSlider2.play();
+  textSlider3.play();
+});
 </script>

@@ -1,12 +1,15 @@
 <script setup>
-import { onMounted, onUnmounted } from 'vue';
+import {onMounted, onUnmounted} from 'vue';
 import useTextEffect from '~/composables/useTextEffect';
+
 import gsap from "gsap";
 
-onMounted( () => {
-  const { setupTextEffects, cleanup, effectsTimeline } = useTextEffect('.js--text-animation-1');
-    setupTextEffects();
-    effectsTimeline.play();
+
+onMounted(() => {
+  const {setupTextEffects, cleanup, effectsTimeline} = useTextEffect('.js--text-animation-1');
+  setupTextEffects();
+  effectsTimeline.play();
+
 });
 
 
