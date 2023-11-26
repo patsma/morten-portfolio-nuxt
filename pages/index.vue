@@ -2,24 +2,22 @@
   <HeaderComponent/>
   <main class="main">
     <Overlay/>
-    <div class="smooth-wrapper">
-      <div class="smooth-content">
-        <div class="main-grid grid">
-          <Hero/>
-          <TextBiography/>
-          <TextServices/>
-          <TextClients/>
-          <TextAwards/>
-          <Experience/>
-          <Recommendations/>
-          <List/>
-          <Image/>
-          <Video/>
-          <FooterComponent/>
-          <Contact/>
-        </div>
+    <ScrollSmoother>
+      <div class="main-grid grid">
+        <Hero/>
+        <TextBiography/>
+        <TextServices/>
+        <TextClients/>
+        <TextAwards/>
+        <Experience/>
+        <Recommendations/>
+        <List/>
+        <Image/>
+        <Video/>
+        <FooterComponent/>
+        <Contact/>
       </div>
-    </div>
+    </ScrollSmoother>
   </main>
 </template>
 <script setup lang="ts">
@@ -40,11 +38,12 @@ import Image from "~/components/Image.vue";
 
 import {useScrollSmoother} from '~/composables/useScrollSmoother';
 import {onMounted, onUnmounted} from 'vue';
+import ScrollSmoother from "~/components/ScrollSmoother.vue";
 
 const {init, destroy} = useScrollSmoother();
 
 onMounted(() => {
-    init();
+  init();
 })
 onUnmounted(destroy);
 </script>
