@@ -6,18 +6,16 @@
     <DefaultSmoothScroller>
       <Hero/>
       <TextBiography/>
-      <!--
-          <TextServices/>
-          <TextClients/>
-          <TextAwards/>
-          <Experience/>
-          <Recommendations/>
-          <List/>
-          <Image/>
-          <Video/>
-          <FooterComponent/>
-          <Contact/>
-          -->
+      <TextServices/>
+      <TextClients/>
+      <TextAwards/>
+      <Experience/>
+      <Recommendations/>
+      <List/>
+      <Image/>
+      <Video/>
+      <FooterComponent/>
+      <Contact/>
     </DefaultSmoothScroller>
   </div>
 </template>
@@ -36,4 +34,5 @@ import List from "~/components/List.vue";
 import Video from "~/components/Video.vue";
 import FooterComponent from "~/components/FooterComponent.vue";
 import Contact from "~/components/Contact.vue";
+import Image from "~/components/Image.vue";
 </script>

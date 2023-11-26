@@ -16,7 +16,7 @@
               <div class="accordion__item-wrapper grid grid-flow-col content-center items-center justify-start gap-12">
                 <div class="accordion__item-title peiko-italic-100 text-xl leading-[120%] md:text-8xl md:tracking-tighter">An extraordinary individual</div>
                 <div class="accordion__item-img max-w-[10rem] md:max-w-xs">
-                  <img alt="" src="placeholder.jpg" />
+                  <img alt="" src="@/assets/img/placeholder.jpg" />
                 </div>
                 <div class="accordion__item-name text-xl leading-[120%] md:text-8xl md:tracking-tighter">
                   <span class="ibmplex-200">Thomas</span>
@@ -36,7 +36,7 @@
               <div class="accordion__item-wrapper grid grid-flow-col content-center items-center justify-start gap-12">
                 <div class="accordion__item-title peiko-italic-100 text-xl leading-[120%] md:text-8xl md:tracking-tighter">Understands tech</div>
                 <div class="accordion__item-img max-w-[10rem] md:max-w-xs">
-                  <img alt="" src="placeholder.jpg" />
+                  <img alt="" src="@/assets/img/placeholder.jpg" />
                 </div>
                 <div class="accordion__item-name text-xl leading-[120%] md:text-8xl md:tracking-tighter">
                   <span class="ibmplex-200">Nicolai</span>
@@ -56,7 +56,7 @@
               <div class="accordion__item-wrapper grid grid-flow-col content-center items-center justify-start gap-12">
                 <div class="accordion__item-title peiko-italic-100 text-xl leading-[120%] md:text-8xl md:tracking-tighter">Ludacris speeds...</div>
                 <div class="accordion__item-img max-w-[10rem] md:max-w-xs">
-                  <img alt="" src="placeholder.jpg" />
+                  <img alt="" src="@/assets/img/placeholder.jpg" />
                 </div>
                 <div class="accordion__item-name text-xl leading-[120%] md:text-8xl md:tracking-tighter">
                   <span class="ibmplex-200">Jesper</span>
@@ -76,7 +76,7 @@
               <div class="accordion__item-wrapper grid grid-flow-col content-center items-center justify-start gap-12">
                 <div class="accordion__item-title peiko-italic-100 text-xl leading-[120%] md:text-8xl md:tracking-tighter">A beneficial addition to any organization</div>
                 <div class="accordion__item-img max-w-[10rem] md:max-w-xs">
-                  <img alt="" src="placeholder.jpg" />
+                  <img alt="" src="@/assets/img/placeholder.jpg" />
                 </div>
                 <div class="accordion__item-name text-xl leading-[120%] md:text-8xl md:tracking-tighter">
                   <span class="ibmplex-200">Jonas</span>
@@ -96,7 +96,7 @@
               <div class="accordion__item-wrapper grid grid-flow-col content-center items-center justify-start gap-12">
                 <div class="accordion__item-title peiko-italic-100 text-xl leading-[120%] md:text-8xl md:tracking-tighter">A talented passionate designer</div>
                 <div class="accordion__item-img max-w-[10rem] md:max-w-xs">
-                  <img alt="" src="placeholder.jpg" />
+                  <img alt="" src="@/assets/img/placeholder.jpg" />
                 </div>
                 <div class="accordion__item-name text-xl leading-[120%] md:text-8xl md:tracking-tighter">
                   <span class="ibmplex-200">Mikkel</span>
@@ -116,7 +116,7 @@
               <div class="accordion__item-wrapper grid grid-flow-col content-center items-center justify-start gap-12">
                 <div class="accordion__item-title peiko-italic-100 text-xl leading-[120%] md:text-8xl md:tracking-tighter">A funny and nice guy to work with</div>
                 <div class="accordion__item-img max-w-[10rem] md:max-w-xs">
-                  <img alt="" src="placeholder.jpg" />
+                  <img alt="" src="@/assets/img/placeholder.jpg" />
                 </div>
                 <div class="accordion__item-name text-xl leading-[120%] md:text-8xl md:tracking-tighter">
                   <span class="ibmplex-200">Rune</span>
@@ -136,7 +136,7 @@
               <div class="accordion__item-wrapper grid grid-flow-col content-center items-center justify-start gap-12">
                 <div class="accordion__item-title peiko-italic-100 text-xl leading-[120%] md:text-8xl md:tracking-tighter">Fast and efficient</div>
                 <div class="accordion__item-img max-w-[10rem] md:max-w-xs">
-                  <img alt="" src="placeholder.jpg" />
+                  <img alt="" src="@/assets/img/placeholder.jpg" />
                 </div>
                 <div class="accordion__item-name text-xl leading-[120%] md:text-8xl md:tracking-tighter">
                   <span class="ibmplex-200">Clare</span>
@@ -156,7 +156,7 @@
               <div class="accordion__item-wrapper grid grid-flow-col content-center items-center justify-start gap-12">
                 <div class="accordion__item-title peiko-italic-100 text-xl leading-[120%] md:text-8xl md:tracking-tighter">a joy to have him on the team</div>
                 <div class="accordion__item-img max-w-[10rem] md:max-w-xs">
-                  <img alt="" src="placeholder.jpg" />
+                  <img alt="" src="@/assets/img/placeholder.jpg" />
                 </div>
                 <div class="accordion__item-name text-xl leading-[120%] md:text-8xl md:tracking-tighter">
                   <span class="ibmplex-200">Thomas</span>
@@ -178,7 +178,7 @@
                   Always with a positive attitude to work and colleagues
                 </div>
                 <div class="accordion__item-img max-w-[10rem] md:max-w-xs">
-                  <!--                            <img class="opacity-0" src="placeholder.jpg" alt="" />-->
+                  <!--                            <img class="opacity-0" src="@/assets/img/placeholder.jpg" alt="" />-->
                 </div>
                 <div class="accordion__item-name text-xl leading-[120%] tracking-tighter md:text-8xl">
                   <span class="ibmplex-200">David</span>

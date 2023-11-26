@@ -5,7 +5,7 @@
         <!-- Wrapper with overflow hidden -->
         <div class="video_cont hoverable" data-hover-text="Play">
           <video autoplay loop muted>
-            <source src="sample1.mp4" type="video/mp4" />
+            <source src="@/assets/video/sample1.mp4" type="video/mp4"/>
           </video>
         </div>
       </div>
