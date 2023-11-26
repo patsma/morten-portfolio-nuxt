@@ -65,14 +65,28 @@
 import { onMounted } from 'vue';
 import useTextSlider from '~/composables/useTextSlider';
 import ThemeToggleSVG from "~/components/ThemeToggleSVG.vue";
+import Headroom from "headroom.js";
 
 const textSlider1 = useTextSlider('.js--text-slider-01 li');
 const textSlider2 = useTextSlider('.js--text-slider-02 li');
 const textSlider3 = useTextSlider('.js--text-slider-03 li');
+function headroomInit(selector) {
+  // select your header or whatever element you wish
+  const header = document.querySelector(selector);
+
+  const headroom = new Headroom(header);
+  headroom.init();
+}
 
 onMounted(() => {
   textSlider1.play();
   textSlider2.play();
   textSlider3.play();
+  headroomInit('.nav');
+
 });
+
+
+
+
 </script>

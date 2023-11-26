@@ -35,4 +35,5 @@ import Video from "~/components/Video.vue";
 import FooterComponent from "~/components/FooterComponent.vue";
 import Contact from "~/components/Contact.vue";
 import Image from "~/components/Image.vue";
+
 </script>

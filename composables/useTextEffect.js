@@ -8,7 +8,8 @@ export default function useTextEffect(selector) {
     const setupTextEffects = () => {
         document.querySelectorAll(selector).forEach((heroHeader) => {
             initTextEffect(heroHeader);
-            window.addEventListener('resize', () => initTextEffect(heroHeader));
+            //TODO uncomment this if you want to reinit the text effect on resize - needs to be adjusted
+            // window.addEventListener('resize', () => initTextEffect(heroHeader));
         });
     };
 
