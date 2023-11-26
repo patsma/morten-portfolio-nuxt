@@ -1,6 +1,8 @@
 <script setup>
+import Loader from "~/components/Loader.vue";
+
 useHead({
-  title: 'Nuxt Morten Portfolio ',
+  title: 'Nuxt Morten Portfolio',
 });
 onMounted(() => {
   const loaderGroup = document.querySelector(".loader-group");
@@ -16,6 +18,7 @@ onMounted(() => {
     <NuxtPage></NuxtPage>
   </div>
 </template>
+<!--suppress CssUnknownTarget -->
 <style lang="scss">
 @use "~/assets/scss/main.scss";
 
