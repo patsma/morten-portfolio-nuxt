@@ -64,6 +64,7 @@
 <script setup>
 import { onMounted } from 'vue';
 import useTextSlider from '~/composables/useTextSlider';
+import ThemeToggleSVG from "~/components/ThemeToggleSVG.vue";
 
 const textSlider1 = useTextSlider('.js--text-slider-01 li');
 const textSlider2 = useTextSlider('.js--text-slider-02 li');
