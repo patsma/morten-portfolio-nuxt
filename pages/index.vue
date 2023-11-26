@@ -1,18 +1,13 @@
 <template>
-  <div>
     <HeaderComponent/>
     <Overlay/>
-    <div class="smooth-wrapper">
-      <div class="smooth-content">
-        <div class="main-grid grid">
-          <Hero/>
-        </div>
-      </div>
-    </div>
-  </div>
+    <DefaultSmoothScroller>
+      <Hero/>
+    </DefaultSmoothScroller>
 </template>
 <script setup lang="ts">
 import Hero from "~/components/Hero.vue";
 import Overlay from "~/components/Overlay.vue";
 import HeaderComponent from "~/components/HeaderComponent.vue";
+import DefaultSmoothScroller from "~/components/DefaultSmoothScroller.vue";
 </script>

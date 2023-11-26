@@ -4,7 +4,7 @@
       <div class="nav__wrapper col-start-2 col-end-12 grid grid-flow-col items-center justify-between">
         <div class="nav__logo">
           <div class="ibmplex-400 grid gap-1">
-            <div class="text-dark-100 text-xs leading-[100%] tracking-[-0.03125rem]">Morten Christensen</div>
+            <NuxtLink to="/" class="text-dark-100 text-xs leading-[100%] tracking-[-0.03125rem]">Morten Christensen</NuxtLink>
             <div class="nav__roles text-dark-40 js--text-slider-01 overflow-hidden text-xxs leading-[100%]">
               <ul>
                 <li>UX/UI Designer</li>
@@ -19,10 +19,10 @@
         </div>
         <ul class="nav__list peiko-500 hidden grid-flow-col gap-8 text-base leading-[100%] md:grid">
           <li class="nav__item">
-            <a class="nav__link " href="#">Work</a>
+            <NuxtLink to="/" class="nav__link ">Work</NuxtLink>
           </li>
           <li class="nav__item">
-            <a class="nav__link " href="#">About</a>
+            <NuxtLink to="/about" class="nav__link ">About</NuxtLink>
           </li>
           <li class="nav__item grid" id="themeSwitch">
             <button>

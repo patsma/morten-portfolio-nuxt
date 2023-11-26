@@ -14,7 +14,7 @@ onMounted(() => {
 </script>
 <template>
   <div>
-        <Loader></Loader>
+    <Loader></Loader>
     <NuxtPage></NuxtPage>
   </div>
 </template>
