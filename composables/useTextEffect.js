@@ -1,26 +1,15 @@
-import {onMounted, onUnmounted, ref} from 'vue';
+import { onMounted, onUnmounted } from 'vue';
 import gsap from 'gsap';
 import SplitText from 'gsap/SplitText';
+import { debounce } from 'lodash-es';
 
 gsap.registerPlugin(SplitText);
+
 export default function useTextEffect(selector) {
-    const effectsTimeline = gsap.timeline({paused: true});
-    const setupTextEffects = () => {
-        document.querySelectorAll(selector).forEach((heroHeader) => {
-            initTextEffect(heroHeader);
-            //TODO uncomment this if you want to reinit the text effect on resize - needs to be adjusted
-            // window.addEventListener('resize', () => initTextEffect(heroHeader));
-        });
-    };
+    let splitTexts = [];
+    const effectsTimeline = gsap.timeline({ paused: true });
 
-    const initTextEffect = (heroHeader) => {
-        const mySplitText = new SplitText(heroHeader, {type: "words"});
-        const words = mySplitText.words;
-        groupAndAnimate(words, heroHeader);
-        createTimeline(heroHeader);
-    };
-
-    function groupAndAnimate(words, heroHeader) {
+    const groupAndAnimate = (words, heroHeader) => {
         heroHeader.querySelectorAll(".line-group-text-1").forEach((el) => el.remove());
 
         let currentLineWidth = 0;
@@ -60,10 +49,15 @@ export default function useTextEffect(selector) {
             }
         });
 
-    }
 
-    function createTimeline(heroHeader) {
+    };
+
+    const createTimeline = (heroHeader) => {
         const lines = heroHeader.querySelectorAll(".line-container-text-1");
+        if (lines.length === 0) {
+            console.warn('No elements found for animation');
+            return; // Exit the function if no elements are found
+        }
         effectsTimeline.fromTo(
             lines,
             {
@@ -75,12 +69,46 @@ export default function useTextEffect(selector) {
             {rotation: 0, y: "0px", duration: 0.6, ease: "sine.out", stagger: 0.04}
         );
         effectsTimeline.timeScale(0.7);
-    }
 
-    const cleanup = () => {
-        // Remove event listeners or any other cleanup logic
     };
 
-    return {setupTextEffects, cleanup, effectsTimeline};
+    const initTextEffect = (heroHeader) => {
+        const mySplitText = new SplitText(heroHeader, { type: "words" });
+        const words = mySplitText.words;
+        splitTexts.push(mySplitText); // Keep track of SplitText instances for cleanup
+        groupAndAnimate(words, heroHeader);
+        createTimeline(heroHeader);
+    };
 
+    const setupTextEffects = () => {
+        document.querySelectorAll(selector).forEach((element) => {
+            initTextEffect(element);
+        });
+    };
+
+    const resetEffects = () => {
+        const progress = effectsTimeline.progress();
+        const paused = effectsTimeline.paused();
+        effectsTimeline.progress(0).clear();
+        splitTexts.forEach((split) => split.revert());
+        splitTexts = [];
+        document.querySelectorAll(selector).forEach((element) => initTextEffect(element));
+        effectsTimeline.progress(progress).paused(paused);
+    };
+
+    const resizeHandler = debounce(() => {
+        resetEffects();
+    }, 250);
+
+    onMounted(() => {
+        setupTextEffects();
+        window.addEventListener('resize', resizeHandler);
+    });
+
+    onUnmounted(() => {
+        window.removeEventListener('resize', resizeHandler);
+        resetEffects(); // Cleanup and revert SplitText changes
+    });
+
+    return { setupTextEffects, effectsTimeline };
 }
