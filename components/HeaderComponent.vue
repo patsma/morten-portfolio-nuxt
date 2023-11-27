@@ -62,98 +62,34 @@
   </header>
 </template>
 <script setup>
-import { onMounted } from 'vue';
-import { gsap } from 'gsap';
+import { onMounted, onUnmounted, ref } from 'vue';
+import gsap from 'gsap';
 import { MorphSVGPlugin } from 'gsap/MorphSVGPlugin';
 import useTextSlider from '~/composables/useTextSlider';
+import useThemeSwitch from '~/composables/useThemeSwitch'; // New composable for theme switch
+import useHeadroom from '~/composables/useHeadroom'; // New composable for Headroom
 import ThemeToggleSVG from "~/components/ThemeToggleSVG.vue";
-import Headroom from "headroom.js";
-const textSlider1 = useTextSlider('.js--text-slider-01 li');
-const textSlider2 = useTextSlider('.js--text-slider-02 li');
-const textSlider3 = useTextSlider('.js--text-slider-03 li');
-gsap.registerPlugin(MorphSVGPlugin)
-function headroomInit(selector) {
-  // select your header or whatever element you wish
-  const header = document.querySelector(selector);
 
-  const headroom = new Headroom(header);
-  headroom.init();
-}
-function toggleTimeline(timeline) {
-  if (timeline.reversed()) {
-    timeline.play();
-  } else {
-    timeline.reverse();
-  }
-}
+// Initialize composable functions
+const { play: playSlider1 } = useTextSlider('.js--text-slider-01 li');
+const { play: playSlider2 } = useTextSlider('.js--text-slider-02 li');
+const { play: playSlider3 } = useTextSlider('.js--text-slider-03 li');
+const { initHeadroom, destroyHeadroom } = useHeadroom('.nav');
+
+gsap.registerPlugin(MorphSVGPlugin);
 
 onMounted(() => {
+  const { initThemeSwitch } = useThemeSwitch();
 
   MorphSVGPlugin.convertToPath("circle, rect, ellipse, line, polygon, polyline");
-  function themeSwitch() {
-
-    const lightTheme = {
-      "--color-bg": "#FFFFFF",
-      "--color-text": "#000000",
-      "--color-secondary": "#AAAAAA",
-      "--color-tertiary": "#888888",
-      "--color-gradient": "linear-gradient(to right, #FFFFFF, #DDDDDD)",
-      "--color-bg-gradient": "linear-gradient(to right, #DDDDDD, #FFFFFF)",
-    };
-    const darkTheme = {
-      "--color-bg": "#000000",
-      "--color-text": "#FFFFFF",
-      "--color-secondary": "#444444",
-      "--color-tertiary": "#666666",
-      "--color-gradient": "linear-gradient(to right, #000000, #333333)",
-      "--color-bg-gradient": "linear-gradient(to right, #333333, #000000)",
-    };
-
-    const themeSwitch = document.querySelector("#themeSwitch");
-    const html = document.documentElement;
-    const sunDark = document.querySelector("#sun-dark");
-    const sunLight = document.querySelector("#sun-light");
-    const sunLightBeams = document.querySelectorAll("#sun-light-beams path");
-    const sunLightInner = document.querySelector("#sun-light-inner");
-    const moonDark = document.querySelector("#moon-dark");
-    const moonWhite = document.querySelector("#moon-white");
-    const background = document.querySelector("#bg");
-
-    const currentBgColor = getComputedStyle(html).getPropertyValue("--color-bg").trim();
-
-    gsap.set([sunDark, moonDark], { autoAlpha: 0 });
-    const tl = gsap.timeline({ paused: true });
-
-    if (currentBgColor === darkTheme["--color-bg"]) {
-      tl.to(html, { ...lightTheme, ease: "power1.out", duration: 0.5 });
-    } else {
-      tl.to(html, { ...darkTheme, ease: "power1.out", duration: 0.5 });
-    }
-
-    tl.to(background, { duration: 0.5, fill: "#fffaf5", ease: "power1.out" }, "<");
-    tl.to(sunLightBeams, { duration: 0.5, autoAlpha: 0, ease: "power1.out" }, "<");
-    tl.to(moonWhite, { duration: 0.5, morphSVG: moonDark, fill: "#090925", ease: "power1.out" }, "<");
-    tl.to(sunLightInner, { duration: 0.5, morphSVG: sunDark, fill: "#090925", ease: "power1.out" }, "<");
-    tl.reverse();
-
-    themeSwitch.addEventListener("click", function () {
-      if (currentBgColor === darkTheme["--color-bg"]) {
-        toggleTimeline(tl);
-      } else {
-        toggleTimeline(tl);
-      }
-    });
-  }
-
-  textSlider1.play();
-  textSlider2.play();
-  textSlider3.play();
-  headroomInit('.nav');
-  themeSwitch();
-
+  playSlider1();
+  playSlider2();
+  playSlider3();
+  initHeadroom();
+  initThemeSwitch();
 });
 
-
-
-
+onUnmounted(() => {
+  destroyHeadroom();
+});
 </script>
