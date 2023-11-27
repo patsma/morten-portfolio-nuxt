@@ -6,9 +6,9 @@
     <div class="smooth-wrapper">
       <div class="smooth-content">
         <div class="main-grid grid">
+          <Hero/>
           <TextBiography/>
           <TextServices/>
-          <Hero/>
           <TextClients/>
           <Experience/>
           <Image/>
