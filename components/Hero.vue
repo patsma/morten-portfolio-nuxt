@@ -5,7 +5,7 @@ import useTextEffect from '~/composables/useTextEffect';
 const { setupTextEffects, effectsTimeline } = useTextEffect('.js--text-animation-1');
 
 onMounted(() => {
-  effectsTimeline.play();
+  effectsTimeline.play(0);
 });
 
 onUnmounted(() => {

@@ -31,7 +31,7 @@
             </button>
           </li>
           <li class="nav__item">
-            <a class="nav__link " href="#">Lab</a>
+            <NuxtLink to="/testing" class="nav__link ">Lab</NuxtLink>
           </li>
           <li class="nav__item">
             <a class="nav__link " href="#">Contact</a>
