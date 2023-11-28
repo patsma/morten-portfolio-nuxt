@@ -149,18 +149,27 @@ export default function useTextSlider(selector) {
             fade: 0.1,
         });
     };
+    const resetEffects = () => {
+        effectsTimeline.clear();
+        elements.forEach(element => {
+            // Additional cleanup if necessary
+        });
+    };
+
     onMounted(() => {
         initEffects();
         elements = document.querySelectorAll(selector);
         splitElements();
+        effectsTimeline.play();
     });
 
     onUnmounted(() => {
-        // Cleanup if necessary
+        resetEffects();
     });
 
     const play = () => effectsTimeline.play();
     const pause = () => effectsTimeline.pause();
+    const progress = () => effectsTimeline.progress(0);
 
-    return { play, pause, effectsTimeline };
+    return { play, pause, progress ,effectsTimeline, resetEffects };
 }

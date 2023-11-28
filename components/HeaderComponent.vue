@@ -66,14 +66,15 @@ import { onMounted, onUnmounted, ref } from 'vue';
 import gsap from 'gsap';
 import { MorphSVGPlugin } from 'gsap/MorphSVGPlugin';
 import useTextSlider from '~/composables/useTextSlider';
-import useThemeSwitch from '~/composables/useThemeSwitch'; // New composable for theme switch
-import useHeadroom from '~/composables/useHeadroom'; // New composable for Headroom
+import useThemeSwitch from '~/composables/useThemeSwitch';
+import useHeadroom from '~/composables/useHeadroom';
 import ThemeToggleSVG from "~/components/ThemeToggleSVG.vue";
 
 // Initialize composable functions
-const { play: playSlider1 } = useTextSlider('.js--text-slider-01 li');
-const { play: playSlider2 } = useTextSlider('.js--text-slider-02 li');
-const { play: playSlider3 } = useTextSlider('.js--text-slider-03 li');
+const { play: playSlider1,progress: progressSlider1 } = useTextSlider('.js--text-slider-01 li');
+const { play: playSlider2,progress: progressSlider2 } = useTextSlider('.js--text-slider-02 li');
+const { play: playSlider3,progress: progressSlider3 } = useTextSlider('.js--text-slider-03 li');
+
 const { initHeadroom, destroyHeadroom } = useHeadroom('.nav');
 
 gsap.registerPlugin(MorphSVGPlugin);
@@ -90,6 +91,9 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
+  progressSlider1();
+  progressSlider2();
+  progressSlider3();
   destroyHeadroom();
 });
 </script>
