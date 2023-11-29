@@ -1,18 +1,18 @@
 import { onMounted, onUnmounted, nextTick } from 'vue';
+import { useAnimationStore } from '~/stores/animation';
 import gsap from 'gsap';
 import SplitText from 'gsap/SplitText';
 import { debounce } from 'lodash-es';
 
 gsap.registerPlugin(SplitText);
 
-export default function useTextEffect(selector) {
+export default function useTextEffect(selector, effectName) {
+    const animationStore = useAnimationStore();
     let splitTexts = [];
     let originalHTML = {}; // Object to store original HTML
-    const effectsTimeline = gsap.timeline({ paused: true });
 
     const groupAndAnimate = async (words, heroHeader) => {
         return new Promise((resolve) => {
-            // heroHeader.querySelectorAll(".line-group-text-1").forEach((el) => el.remove());
 
             let currentLineWidth = 0;
             const maxLineWidth = heroHeader.offsetWidth * 0.9;
@@ -54,6 +54,7 @@ export default function useTextEffect(selector) {
         });
     };
 
+
     const createTimeline = async (heroHeader) => {
         return new Promise((resolve) => {
             const lines = heroHeader.querySelectorAll(".line-container-text-1");
@@ -62,40 +63,41 @@ export default function useTextEffect(selector) {
                 resolve();
                 return;
             }
-            effectsTimeline.fromTo(
-                lines,
-                {
-                    y: (i, target) => `${target.offsetHeight}px`,
-                    transformOrigin: "-25% 150%",
-                    rotation: 10,
-                    perspective: 1000,
-                },
-                {
-                    rotation: 0,
-                    y: "0px",
-                    duration: 0.6,
-                    ease: "sine.out",
-                    stagger: 0.04
-                }
-            );
-            effectsTimeline.timeScale(0.7);
+
+            // Creating a new GSAP timeline for this effect
+            const timeline = gsap.timeline({ paused: true })
+                .fromTo(
+                    lines,
+                    {
+                        y: (i, target) => `${target.offsetHeight}px`,
+                        transformOrigin: "-25% 150%",
+                        rotation: 10,
+                        perspective: 1000,
+                    },
+                    {
+                        rotation: 0,
+                        y: "0px",
+                        duration: 0.6,
+                        ease: "sine.out",
+                        stagger: 0.04
+                    }
+                );
+            timeline.timeScale(0.7);
+
+            animationStore.initTextEffect(effectName, timeline);
             resolve();
         });
     };
 
-
     const initTextEffect = async (element) => {
-        if (originalHTML[element]) {
-            element.innerHTML = originalHTML[element];
-        } else {
+        if (!originalHTML[element]) {
             originalHTML[element] = element.innerHTML;
         }
 
         const mySplitText = new SplitText(element, { type: "words" });
-        const words = mySplitText.words;
         splitTexts.push(mySplitText);
 
-        await groupAndAnimate(words, element);
+        await groupAndAnimate(mySplitText.words, element);
         await createTimeline(element);
     };
 
@@ -105,11 +107,11 @@ export default function useTextEffect(selector) {
             await nextTick();
             await initTextEffect(element);
         }
-        effectsTimeline.play();
+        animationStore.playTextEffect(effectName);
     };
 
     const resetEffects = async () => {
-        effectsTimeline.progress(0).clear();
+        animationStore.resetTextEffect(effectName);
         splitTexts.forEach((split) => split.revert());
         splitTexts = [];
         await setupTextEffects();
@@ -129,5 +131,5 @@ export default function useTextEffect(selector) {
         resetEffects();
     });
 
-    return { setupTextEffects, effectsTimeline };
+    return { setupTextEffects };
 }

@@ -18,9 +18,11 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
+    "@pinia/nuxt": "^0.5.1",
     "gsap": "file:gsap-bonus.tgz",
     "headroom.js": "^0.12.0",
     "lodash-es": "^4.17.21",
+    "pinia": "^2.1.7",
     "sass": "^1.69.5",
     "three": "^0.158.0"
   }
