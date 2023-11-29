@@ -41,7 +41,8 @@ export const useAnimationStore = defineStore('animation', {
         },
         playTextEffect(name) {
             if (this.textEffects[name]) {
-                this.textEffects[name].play();
+                this.textEffects[name].progress(0);
+                this.textEffects[name].play(0);
             }
         },
         pauseTextEffect(name) {

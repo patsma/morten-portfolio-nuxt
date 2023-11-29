@@ -11,8 +11,7 @@ export default function useTextEffect(selector, effectName) {
     let splitTexts = [];
     let originalHTML = {}; // Object to store original HTML
 
-    const groupAndAnimate = async (words, heroHeader) => {
-        return new Promise((resolve) => {
+    const groupAndAnimate =  (words, heroHeader) => {
 
             let currentLineWidth = 0;
             const maxLineWidth = heroHeader.offsetWidth * 0.9;
@@ -50,17 +49,13 @@ export default function useTextEffect(selector, effectName) {
                     lineContainer.appendChild(document.createTextNode(" "));
                 }
             });
-            resolve();
-        });
     };
 
 
-    const createTimeline = async (heroHeader) => {
-        return new Promise((resolve) => {
+    const createTimeline =  (heroHeader) => {
             const lines = heroHeader.querySelectorAll(".line-container-text-1");
             if (lines.length === 0) {
                 console.warn('No elements found for animation');
-                resolve();
                 return;
             }
 
@@ -85,11 +80,9 @@ export default function useTextEffect(selector, effectName) {
             timeline.timeScale(0.7);
 
             animationStore.initTextEffect(effectName, timeline);
-            resolve();
-        });
     };
 
-    const initTextEffect = async (element) => {
+    const initTextEffect =  (element) => {
         if (!originalHTML[element]) {
             originalHTML[element] = element.innerHTML;
         }
@@ -97,32 +90,32 @@ export default function useTextEffect(selector, effectName) {
         const mySplitText = new SplitText(element, { type: "words" });
         splitTexts.push(mySplitText);
 
-        await groupAndAnimate(mySplitText.words, element);
-        await createTimeline(element);
+         groupAndAnimate(mySplitText.words, element);
+         createTimeline(element);
     };
 
-    const setupTextEffects = async () => {
+    const setupTextEffects =  () => {
         const elements = document.querySelectorAll(selector);
         for (let element of elements) {
-            await nextTick();
-            await initTextEffect(element);
+             nextTick();
+             initTextEffect(element);
         }
         animationStore.playTextEffect(effectName);
     };
 
-    const resetEffects = async () => {
+    const resetEffects =  () => {
         animationStore.resetTextEffect(effectName);
         splitTexts.forEach((split) => split.revert());
         splitTexts = [];
-        await setupTextEffects();
+        setupTextEffects();
     };
 
-    const resizeHandler = debounce(async () => {
-        await resetEffects();
+    const resizeHandler = debounce( () => {
+         resetEffects();
     }, 250);
 
-    onMounted(async () => {
-        await setupTextEffects();
+    onMounted( () => {
+         setupTextEffects();
         window.addEventListener('resize', resizeHandler);
     });
 
