@@ -1,35 +1,33 @@
 <script setup>
-import { onMounted, onUnmounted, ref, nextTick } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import useTextEffect from '~/composables/useTextEffect';
 import { useAnimationStore } from '~/stores/animation';
 
 const effectName = 'heroHeaderEffect';
 const animationStore = useAnimationStore();
 const isEffectPlaying = ref(false);
+const textElement = ref(null);
 
-// Function to initialize and start the text effect
-const startEffect = async () => {
-  await useTextEffect('.js--text-animation-1', effectName);
-  // Ensure the DOM is updated before playing the animation
-  await nextTick();
-  animationStore.playTextEffect(effectName);
-  isEffectPlaying.value = true;
-};
+const { setupTextEffects, resetEffects } = useTextEffect('.js--text-animation-1', effectName);
 
-// Function to reset and clear the text effect
-const stopEffect = () => {
-  animationStore.resetTextEffect(effectName);
-  isEffectPlaying.value = false;
-};
-
-onMounted(async () => {
-  await startEffect();
+onMounted(() => {
+  if (textElement.value) {
+    console.log('Initializing text effect:', textElement.value);
+    setupTextEffects();
+    animationStore.playTextEffect(effectName);
+    isEffectPlaying.value = true;
+  }
 });
 
 onUnmounted(() => {
-  stopEffect();
+  resetEffects();
+  isEffectPlaying.value = false;
 });
 </script>
+
+
+
+
 
 
 
@@ -39,7 +37,7 @@ onUnmounted(() => {
   <section class="component component--hero grid h-[95vh] content-end pb-14" id="component-hero-01">
     <div class="col-span-12 col-start-1 col-end-13 grid grid-cols-12">
       <div class="relative col-start-2 col-end-12 grid">
-        <h1 class="js--text-animation-1 peiko-100 text-shadow-1 text-4xl leading-[120%] tracking-tighter md:text-6xl">
+        <h1  ref="textElement" class="js--text-animation-1 peiko-100 text-shadow-1 text-4xl leading-[120%] tracking-tighter md:text-6xl">
                     <span class="text-dark-40">
                       Welcome, I am
                       <span class="text-dark-100 peiko-300">Morten</span>

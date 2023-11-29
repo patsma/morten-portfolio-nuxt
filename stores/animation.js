@@ -40,8 +40,14 @@ export const useAnimationStore = defineStore('animation', {
             this.textEffects[name] = timeline;
         },
         playTextEffect(name) {
+            console.log(`Attempting to play effect: ${name}`);
             if (this.textEffects[name]) {
+                console.log('Timeline found, playing:', this.textEffects[name]);
+                console.log('Timeline state before play:', this.textEffects[name].isActive(), this.textEffects[name].progress());
                 this.textEffects[name].play();
+                console.log('Play function called for timeline');
+            } else {
+                console.warn(`No timeline found for effect: ${name}`);
             }
         },
         pauseTextEffect(name) {
