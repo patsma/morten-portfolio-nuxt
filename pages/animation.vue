@@ -8,6 +8,8 @@ gsap.registerPlugin(MorphSVGPlugin, DrawSVGPlugin, GSDevTools);
 
 const animateRef = ref(null);
 
+
+
 definePageMeta({
   layout: 'test'
 })
