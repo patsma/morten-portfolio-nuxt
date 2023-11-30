@@ -8,5 +8,5 @@ export default defineNuxtPlugin((nuxtApp) => {
         });
 
         gsap.killAll();
-    });;
+    });
 });

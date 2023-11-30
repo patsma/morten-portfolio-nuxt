@@ -1,3 +1,12 @@
+<script setup>
+
+import useTextEffect from '~/composables/useTextEffect';
+
+const { textEffect1Timelines } = useTextEffect('.js--text-effect-102', true);
+
+
+
+</script>
 <template>
   <section class="component component--footer grid py-14" id="component-footer-01">
     <div class="col-span-12 col-start-1 col-end-13 grid grid-cols-12">
