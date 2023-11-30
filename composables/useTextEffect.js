@@ -1,128 +1,145 @@
-import { onMounted, onUnmounted, nextTick } from 'vue';
-import { useAnimationStore } from '~/stores/animation';
+import { onMounted, onUnmounted, ref } from 'vue';
 import gsap from 'gsap';
-import SplitText from 'gsap/SplitText';
-import { debounce } from 'lodash-es';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { SplitText } from 'gsap/SplitText';
 
-gsap.registerPlugin(SplitText);
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
-export default function useTextEffect(selector, effectName) {
-    const animationStore = useAnimationStore();
-    let splitTexts = [];
-    let originalHTML = {}; // Object to store original HTML
+export default function useTextEffect(selector, enableScrollTrigger = false) {
+    const textEffect1Timelines = ref([]);
+    const selectedTextRef = ref([]); // Ref to store the NodeList
 
-    const groupAndAnimate =  (words, heroHeader) => {
+    function debounce(func, wait, immediate) {
+        let timeout;
+        return function () {
+            const context = this, args = arguments;
+            const later = function () {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+            };
+            const callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+        };
+    }
 
-            let currentLineWidth = 0;
-            const maxLineWidth = heroHeader.offsetWidth * 0.9;
-            let lineContainer = null;
-            let lineGroup = null;
+    function textEffect1(selector, enableScrollTrigger) {
+        const selectedText = document.querySelectorAll(selector);
+        selectedTextRef.value = selectedText; // Store the NodeList in the ref
+        const timelines = [];
 
-            words.forEach((word, index) => {
-                const wordWidth = word.offsetWidth;
-                const parentClone = word.parentNode.cloneNode(true);
+        selectedText.forEach((element, index) => {
+            element.setAttribute('data-original-html', element.innerHTML);
+            element.classList.add("text-animation-1");
 
-                while (parentClone.firstChild) {
-                    parentClone.removeChild(parentClone.firstChild);
+            let mySplitText = null;
+            let animationPlayed = false;
+            let tl;
+
+            function groupAndAnimate(replayAnimation = false) {
+                if (mySplitText) {
+                    mySplitText.revert();
                 }
 
-                if (currentLineWidth + wordWidth > maxLineWidth || index === 0) {
-                    lineGroup = document.createElement("div");
-                    lineGroup.className = "line-group-text-1";
-                    heroHeader.appendChild(lineGroup);
+                mySplitText = new SplitText(element, { type: 'words' });
+                const words = mySplitText.words;
 
-                    lineContainer = document.createElement("div");
-                    lineContainer.className = "line-container-text-1";
-                    lineGroup.appendChild(lineContainer);
+                // element.querySelectorAll('.line-group-text-1').forEach(el => el.remove());
 
-                    const maskDiv = document.createElement("div");
-                    maskDiv.className = "text-mask";
-                    lineGroup.appendChild(maskDiv);
+                let currentLineWidth = 0;
+                const maxLineWidth = element.offsetWidth * 0.9;
+                let lineContainer, lineGroup;
 
-                    currentLineWidth = 0;
+                words.forEach((word, wordIndex) => {
+                    const wordWidth = word.offsetWidth;
+                    if (currentLineWidth + wordWidth > maxLineWidth || wordIndex === 0) {
+                        lineGroup = document.createElement('div');
+                        lineGroup.className = 'line-group-text-1';
+                        element.appendChild(lineGroup);
+
+                        lineContainer = document.createElement('div');
+                        lineContainer.className = 'line-container-text-1';
+                        lineGroup.appendChild(lineContainer);
+
+                        const maskDiv = document.createElement('div');
+                        maskDiv.className = 'text-mask';
+                        lineGroup.appendChild(maskDiv);
+
+                        currentLineWidth = 0;
+                    }
+
+                    const parentClone = word.parentNode.cloneNode(true);
+                    while (parentClone.firstChild) {
+                        parentClone.removeChild(parentClone.firstChild);
+                    }
+
+                    parentClone.appendChild(word);
+                    currentLineWidth += wordWidth;
+                    lineContainer.appendChild(parentClone);
+
+                    if (wordIndex !== words.length - 1) {
+                        lineContainer.appendChild(document.createTextNode(' '));
+                    }
+                });
+
+                tl = gsap.timeline({
+                    paused: true,
+                    scrollTrigger: enableScrollTrigger ? {
+                        trigger: element,
+                        start: 'top bottom',
+                        onEnter: () => tl.play(),
+                    } : null,
+                });
+
+                const lines = element.querySelectorAll('.line-container-text-1');
+                tl.fromTo(
+                    lines,
+                    { y: (i, target) => `${target.offsetHeight}px`, transformOrigin: '-25% 150%', rotation: 10, perspective: 1000 },
+                    { rotation: 0, y: '0px', duration: 0.6, ease: 'sine.out', stagger: 0.04 }
+                );
+                tl.timeScale(0.7);
+
+                if (replayAnimation && animationPlayed) {
+                    tl.restart();
                 }
-
-                parentClone.appendChild(word);
-                currentLineWidth += wordWidth;
-                lineContainer.appendChild(parentClone);
-                if (index !== words.length - 1) {
-                    lineContainer.appendChild(document.createTextNode(" "));
-                }
-            });
-    };
-
-
-    const createTimeline =  (heroHeader) => {
-            const lines = heroHeader.querySelectorAll(".line-container-text-1");
-            if (lines.length === 0) {
-                console.warn('No elements found for animation');
-                return;
             }
 
-            // Creating a new GSAP timeline for this effect
-            const timeline = gsap.timeline({ paused: true })
-                .fromTo(
-                    lines,
-                    {
-                        y: (i, target) => `${target.offsetHeight}px`,
-                        transformOrigin: "-25% 150%",
-                        rotation: 10,
-                        perspective: 1000,
-                    },
-                    {
-                        rotation: 0,
-                        y: "0px",
-                        duration: 0.6,
-                        ease: "sine.out",
-                        stagger: 0.04
-                    }
-                );
-            timeline.timeScale(0.7);
+            groupAndAnimate();
 
-            animationStore.initTextEffect(effectName, timeline);
-    };
+            const debouncedGroupAndAnimate = debounce(() => {
+                groupAndAnimate(true);
+            }, 450);
 
-    const initTextEffect =  (element) => {
-        if (!originalHTML[element]) {
-            originalHTML[element] = element.innerHTML;
-        }
+            window.addEventListener('resize', debouncedGroupAndAnimate);
 
-        const mySplitText = new SplitText(element, { type: "words" });
-        splitTexts.push(mySplitText);
+            timelines[index] = {
+                timeline: () => tl,
+                play: () => {
+                    animationPlayed = true;
+                    tl.progress(0)
+                    tl.play();
+                }
+            };
+        });
 
-         groupAndAnimate(mySplitText.words, element);
-         createTimeline(element);
-    };
+        return timelines;
+    }
 
-    const setupTextEffects =  () => {
-        const elements = document.querySelectorAll(selector);
-        for (let element of elements) {
-             nextTick();
-             initTextEffect(element);
-        }
-        animationStore.playTextEffect(effectName);
-    };
-
-    const resetEffects =  () => {
-        animationStore.resetTextEffect(effectName);
-        splitTexts.forEach((split) => split.revert());
-        splitTexts = [];
-        setupTextEffects();
-    };
-
-    const resizeHandler = debounce( () => {
-         resetEffects();
-    }, 250);
-
-    onMounted( () => {
-         setupTextEffects();
-        window.addEventListener('resize', resizeHandler);
+    onMounted(() => {
+        textEffect1Timelines.value = textEffect1(selector, enableScrollTrigger);
     });
 
     onUnmounted(() => {
-        window.removeEventListener('resize', resizeHandler);
-        resetEffects();
+        selectedTextRef.value.forEach(element => {
+            // Restore the original HTML
+            if (element.hasAttribute('data-original-html')) {
+                element.innerHTML = element.getAttribute('data-original-html');
+            }
+        });
     });
 
-    return { setupTextEffects };
+    return {
+        textEffect1Timelines
+    };
 }

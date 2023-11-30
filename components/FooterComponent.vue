@@ -2,7 +2,7 @@
   <section class="component component--footer grid py-14" id="component-footer-01">
     <div class="col-span-12 col-start-1 col-end-13 grid grid-cols-12">
       <div class="relative col-start-2 col-end-12 grid gap-10 md:grid-flow-col">
-        <h1 class="text-animation-1 peiko-100 text-shadow-1 --gsap-txtFadeIn max-w-5xl text-4xl leading-[120%] tracking-tighter md:text-6xl">
+        <h1 class="js--text-effect-102 peiko-100 text-shadow-1 --gsap-txtFadeIn max-w-5xl text-4xl leading-[120%] tracking-tighter md:text-6xl">
                     <span class="text-dark-40">
                       Feel
                       <span class="text-dark-100 peiko-300">free</span>

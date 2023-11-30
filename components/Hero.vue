@@ -1,42 +1,16 @@
 <script setup>
-import {onMounted, onUnmounted, ref, nextTick} from 'vue';
+
 import useTextEffect from '~/composables/useTextEffect';
-import {useAnimationStore} from '~/stores/animation';
 
-const effectName = 'heroHeaderEffect';
-const animationStore = useAnimationStore();
-const isEffectPlaying = ref(false);
-const textElement = ref(null);
-const {setupTextEffects, resetEffects} = useTextEffect('.js--text-animation-1', effectName);
-
-// Function to initialize and start the text effect
-const startEffect = async () => {
-  await useTextEffect('.js--text-animation-1', effectName);
-  // Ensure the DOM is updated before playing the animation
-  await nextTick();
-  animationStore.playTextEffect(effectName);
-  isEffectPlaying.value = true;
-};
-
-// Function to reset and clear the text effect
-const stopEffect = () => {
-  animationStore.resetTextEffect(effectName);
-  isEffectPlaying.value = false;
-};
+const { textEffect1Timelines } = useTextEffect('.js--text-effect-101', false);
 
 onMounted(() => {
-  startEffect();
-  if (textElement.value) {
-    console.log('Initializing text effect:', textElement.value);
-    animationStore.playTextEffect(effectName);
-    isEffectPlaying.value = true;
+
+  if (textEffect1Timelines.value && textEffect1Timelines.value.length > 0) {
+      textEffect1Timelines.value[0].play(); // Play the first timeline
   }
 });
 
-onUnmounted(() => {
-  stopEffect();
-
-});
 </script>
 
 
@@ -44,7 +18,7 @@ onUnmounted(() => {
   <section class="component component--hero grid h-[95vh] content-end pb-14" id="component-hero-01">
     <div class="col-span-12 col-start-1 col-end-13 grid grid-cols-12">
       <div class="relative col-start-2 col-end-12 grid">
-        <h1  class="js--text-animation-1 peiko-100 text-shadow-1 text-4xl leading-[120%] tracking-tighter md:text-6xl">
+        <div  class="js--text-effect-101 peiko-100 text-shadow-1 text-4xl leading-[120%] tracking-tighter md:text-6xl">
                     <span class="text-dark-40">
                       Welcome, I am
                       <span class="text-dark-100 peiko-300">Morten</span>
@@ -61,7 +35,7 @@ onUnmounted(() => {
                       <span class="text-dark-100 peiko-italic-300">-centred</span>
                       mindset
                     </span>
-        </h1>
+        </div>
         <div class="grid md:grid-flow-col">
           <div
               class="services fade-in-animation text-dark-40 ibmplex-500 flex max-w-3xl flex-wrap content-center gap-2 py-4 text-xxs uppercase leading-[110%] tracking-[0.0625rem]"
