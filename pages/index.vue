@@ -15,7 +15,6 @@ onMounted(() => {
   gsap.registerPlugin(MorphSVGPlugin, DrawSVGPlugin, GSDevTools);
 
   MorphSVGPlugin.convertToPath("circle, rect, ellipse, line, polygon, polyline");
-  setTimeout(() => {
 
     // gsap.from(animateRef.value, {duration: 1, y: 50, opacity: 0})
     const artTech = document.querySelector('#artTech');
@@ -68,6 +67,7 @@ onMounted(() => {
       // line9,
       // line10
     ], {autoAlpha: 0});
+    gsap.set('.animationWrapper', {autoAlpha: 1});
 
     // gsap.set({
     //   lineMask1,
@@ -110,8 +110,6 @@ onMounted(() => {
 
 
     GSDevTools.create({animation: tl, minimal: true});
-  }, 300)
-
 })
 
 
@@ -348,3 +346,8 @@ onMounted(() => {
     </div>
   </div>
 </template>
+<style>
+.animationWrapper{
+  opacity: 0;
+}
+</style>
