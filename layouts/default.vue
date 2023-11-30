@@ -18,3 +18,8 @@ onMounted(() => {
     <slot/>
   </div>
 </template>
+<!--suppress CssUnknownTarget -->
+<style lang="scss">
+@use "~/assets/scss/main.scss";
+
+</style>
