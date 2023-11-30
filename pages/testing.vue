@@ -1,4 +1,7 @@
 <script setup lang="ts">
+definePageMeta({
+  layout: 'test'
+})
 import { onMounted, ref, watch } from 'vue';
 import { gsap, TimelineLite } from 'gsap'; // Import the TimelineLite or appropriate class
 import { useUserStore } from '~/stores/user';
@@ -21,6 +24,7 @@ watch(() => user.isAnimationPlaying, (newVal) => {
     timeline.reverse();
   }
 });
+
 </script>
 
 
