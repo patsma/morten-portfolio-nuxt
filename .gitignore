@@ -23,3 +23,6 @@ logs
 .env.*
 !.env.example
 /.vscode/settings.json
+
+# Local Netlify folder
+.netlify
