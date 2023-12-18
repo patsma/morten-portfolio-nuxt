@@ -1,6 +1,6 @@
 <template>
   <header>
-    <nav class="nav fixed top-4 z-40 col-start-1 col-end-13 grid h-16 w-full grid-cols-12">
+    <nav class="nav fixed z-100 top-4 z-40 col-start-1 col-end-13 grid h-16 w-full grid-cols-12">
       <div class="nav__wrapper col-start-2 col-end-12 grid grid-flow-col items-center justify-between">
         <div class="nav__logo">
           <div class="ibmplex-400 grid gap-1">

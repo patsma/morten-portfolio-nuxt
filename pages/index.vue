@@ -1,5 +1,4 @@
 <template>
-  <Overlay/>
   <Hero>
     <template #heroText>
             <span class="text-dark-40">
