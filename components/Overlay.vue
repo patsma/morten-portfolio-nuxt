@@ -1,7 +1,7 @@
 <template>
   <div class="overlay overflow-hidden">
     <div ref="container"
-         class="background-webgl pointer-events-none fixed center-screen z-[-11] h-screen w-screen opacity-40"></div>
+         class="background-webgl pointer-events-none fixed  z-[-11] h-screen w-screen opacity-40"></div>
   </div>
 </template>
 
@@ -111,3 +111,10 @@ onUnmounted(() => {
   }
 });
 </script>
+<style>
+.background-webgl {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1.5);
+}
+</style>
