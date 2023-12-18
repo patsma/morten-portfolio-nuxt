@@ -3,6 +3,11 @@ import gsap from 'gsap';
 import { MorphSVGPlugin } from 'gsap/MorphSVGPlugin';
 
 export default function useThemeSwitch() {
+
+    if (process.client) {
+
+        gsap.registerPlugin(MorphSVGPlugin);
+    }
     // Function to toggle the GSAP timeline
     function toggleTimeline(timeline) {
         if (timeline.reversed()) {
