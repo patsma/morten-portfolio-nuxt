@@ -1,9 +1,6 @@
 <script setup>
-import Loader from "~/components/Loader.vue";
-import HeaderComponent from "~/components/HeaderComponent.vue";
-
 useHead({
-  title: 'Nuxt Morten Portfolio',
+  title: 'Morten Portfolio',
 });
 onMounted(() => {
   const loaderGroup = document.querySelector(".loader-group");
@@ -14,9 +11,10 @@ onMounted(() => {
 });
 </script>
 <template>
-  <div>
+  <main class="main">
     <HeaderComponent/>
+    <Overlay/>
     <Loader></Loader>
     <slot/>
-  </div>
+  </main>
 </template>

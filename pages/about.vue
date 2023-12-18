@@ -1,11 +1,8 @@
 <template>
-  <main class="main">
-    <Overlay/>
-    <div class="main-grid  grid">
-      <Hero>
-        <template #heroText>
+  <Hero>
+    <template #heroText>
             <span class="text-dark-40">
-                      Welcome, I am
+                      About
                       <span class="text-dark-100 peiko-300">Morten</span>
                       – a
                       <span class="text-dark-100 peiko-italic-300">Danish</span>
@@ -20,32 +17,24 @@
                       <span class="text-dark-100 peiko-italic-300">-centred</span>
                       mindset
                     </span>
-        </template>
-        <template #content>
-          <div class="tag rounded p-1">Services</div>
-          <div class="tag bg-dark-5 rounded p-1">Art direction</div>
-          <div class="tag bg-dark-5 rounded p-1">Creative direction</div>
-          <div class="tag bg-dark-5 rounded p-1">Concept Development</div>
-          <div class="tag bg-dark-5 rounded p-1">Consulting & Guidance</div>
-          <div class="tag bg-dark-5 rounded p-1">User experience design (ux)</div>
-          <div class="tag bg-dark-5 rounded p-1">Digital design (UI)</div>
-          <div class="tag bg-dark-5 rounded p-1">Interactive design</div>
-          <div class="tag bg-dark-5 rounded p-1">Design systems & tokens</div>
-        </template>
-      </Hero>
-      <TextBiography/>
-      <TextServices/>
-      <TextClients/>
-      <TextAwards/>
-      <Experience/>
-      <Recommendations/>
-      <List/>
-      <Image/>
-      <Video/>
-      <FooterComponent/>
-      <Contact/>
-    </div>
-  </main>
+    </template>
+    <template #content>
+      <div class="tag rounded p-1">Services</div>
+      <div class="tag bg-dark-5 rounded p-1">Art direction</div>
+
+    </template>
+  </Hero>
+  <TextBiography/>
+  <TextServices/>
+  <TextClients/>
+  <TextAwards/>
+  <Experience/>
+  <Recommendations/>
+  <List/>
+  <Image/>
+  <Video/>
+  <FooterComponent/>
+  <Contact/>
 </template>
 <script setup lang="ts">
 </script>
