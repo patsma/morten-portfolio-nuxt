@@ -2,9 +2,6 @@
 export default defineNuxtConfig({
     devtools: {enabled: true},
     modules: ["@nuxtjs/tailwindcss", "@hypernym/nuxt-gsap","@pinia/nuxt"],
-    plugins: [
-        '~/plugins/route-cleanup.js'
-    ],
     postcss: {
         plugins: {
             tailwindcss: {},
