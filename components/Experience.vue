@@ -1,5 +1,5 @@
 <template>
-  <section class="component component--experience fade-in-animation grid py-48" id="component-experience">
+  <section class="overflow-hidden" >
     <div class="relative grid py-8">
       <div class="elastic-border-item z-10">
         <svg class="line-container" preserveAspectRatio="none" viewBox="0 0 100 30">

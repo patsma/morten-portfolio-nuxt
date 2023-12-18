@@ -1,5 +1,5 @@
 <template>
-  <section class="component component--list grid h-full py-14" id="component-list">
+  <section class="overflow-hidden">
     <div class="col-span-12 col-start-1 col-end-13 grid grid-cols-12">
       <div class="col-start-2 col-end-12 grid gap-10">
         <div class="list grid">
