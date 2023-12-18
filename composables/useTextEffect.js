@@ -3,12 +3,13 @@ import gsap from 'gsap';
 import {ScrollTrigger} from 'gsap/ScrollTrigger';
 import {SplitText} from 'gsap/SplitText';
 
-if (process.client) {
-    gsap.registerPlugin(ScrollTrigger, SplitText);
 
-}
 
 export default function useTextEffect(selector, enableScrollTrigger = false) {
+    if (process.client) {
+        gsap.registerPlugin(ScrollTrigger, SplitText);
+
+    }
     const textEffect1Timelines = ref([]);
     const selectedTextRef = ref([]); // Ref to store the NodeList
 

@@ -2,9 +2,13 @@
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import gsap from 'gsap';
-gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
+
+
 
 export const useScrollSmoother = () => {
+    if(process.client){
+        gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
+    }
     let smoother;
 
     const init = () => {

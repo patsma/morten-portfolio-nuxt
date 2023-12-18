@@ -2,9 +2,13 @@ import { onMounted, onUnmounted } from 'vue';
 import gsap from 'gsap';
 import SplitText from 'gsap/SplitText';
 
-gsap.registerPlugin(SplitText);
 
 export default function useTextSlider(selector) {
+
+    if (process.client) {
+        gsap.registerPlugin(SplitText);
+    }
+
     let effectsTimeline = gsap.timeline({ repeat: -1, paused: true });
     let elements;
 
