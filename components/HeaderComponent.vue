@@ -94,9 +94,7 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  progressSlider1();
-  progressSlider2();
-  progressSlider3();
-  destroyHeadroom();
+
+  // destroyHeadroom();
 });
 </script>
