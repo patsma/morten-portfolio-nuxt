@@ -1,9 +1,12 @@
-import { onMounted, onUnmounted, ref } from 'vue';
+import {onMounted, onUnmounted, ref} from 'vue';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { SplitText } from 'gsap/SplitText';
+import {ScrollTrigger} from 'gsap/ScrollTrigger';
+import {SplitText} from 'gsap/SplitText';
 
-gsap.registerPlugin(ScrollTrigger, SplitText);
+if (process.client) {
+    gsap.registerPlugin(ScrollTrigger, SplitText);
+
+}
 
 export default function useTextEffect(selector, enableScrollTrigger = false) {
     const textEffect1Timelines = ref([]);
@@ -42,7 +45,7 @@ export default function useTextEffect(selector, enableScrollTrigger = false) {
                     mySplitText.revert();
                 }
 
-                mySplitText = new SplitText(element, { type: 'words' });
+                mySplitText = new SplitText(element, {type: 'words'});
                 const words = mySplitText.words;
 
                 // element.querySelectorAll('.line-group-text-1').forEach(el => el.remove());
@@ -95,8 +98,13 @@ export default function useTextEffect(selector, enableScrollTrigger = false) {
                 const lines = element.querySelectorAll('.line-container-text-1');
                 tl.fromTo(
                     lines,
-                    { y: (i, target) => `${target.offsetHeight}px`, transformOrigin: '-25% 150%', rotation: 10, perspective: 1000 },
-                    { rotation: 0, y: '0px', duration: 0.6, ease: 'sine.out', stagger: 0.04 }
+                    {
+                        y: (i, target) => `${target.offsetHeight}px`,
+                        transformOrigin: '-25% 150%',
+                        rotation: 10,
+                        perspective: 1000
+                    },
+                    {rotation: 0, y: '0px', duration: 0.6, ease: 'sine.out', stagger: 0.04}
                 );
                 tl.timeScale(0.7);
 

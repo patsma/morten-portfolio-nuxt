@@ -1,5 +1,6 @@
 <script setup>
 import Loader from "~/components/Loader.vue";
+import HeaderComponent from "~/components/HeaderComponent.vue";
 
 useHead({
   title: 'Nuxt Morten Portfolio',
@@ -14,6 +15,7 @@ onMounted(() => {
 </script>
 <template>
   <div>
+    <HeaderComponent/>
     <Loader></Loader>
     <slot/>
   </div>
