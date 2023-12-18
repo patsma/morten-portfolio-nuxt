@@ -1,6 +1,6 @@
 <template>
   <main class="main">
-    <Overlay/>
+<!--    <Overlay/>-->
     <div class="main-grid  grid">
       <Hero>
         <template #heroText>
