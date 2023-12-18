@@ -1,7 +1,7 @@
 <template>
   <div class="overlay overflow-hidden">
     <div ref="container"
-         class="background-webgl pointer-events-none fixed left-0 top-0 z-[-11] h-screen w-screen opacity-40"></div>
+         class="background-webgl pointer-events-none fixed center-screen z-[-11] h-screen w-screen opacity-40"></div>
   </div>
 </template>
 
