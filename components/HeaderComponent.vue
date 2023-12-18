@@ -34,7 +34,7 @@
             <NuxtLink to="/testing" class="nav__link ">Lab</NuxtLink>
           </li>
           <li class="nav__item">
-            <NuxtLink to="/animation" class="nav__link ">Contact</NuxtLink>
+            <NuxtLink to="/" class="nav__link ">Contact</NuxtLink>
 
           </li>
         </ul>
