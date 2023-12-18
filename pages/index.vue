@@ -1,6 +1,6 @@
 <template>
   <main class="main">
-
+    <Overlay/>
     <div class="main-grid  grid">
       <Hero>
         <template #heroText>
@@ -33,7 +33,17 @@
           <div class="tag bg-dark-5 rounded p-1">Design systems & tokens</div>
         </template>
       </Hero>
-
+      <TextBiography/>
+      <TextServices/>
+      <TextClients/>
+      <TextAwards/>
+      <Experience/>
+      <Recommendations/>
+      <List/>
+      <Image/>
+      <Video/>
+      <FooterComponent/>
+      <Contact/>
     </div>
   </main>
 </template>
