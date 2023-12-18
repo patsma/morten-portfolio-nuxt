@@ -1,9 +1,14 @@
 <script setup>
 
+import useTextEffect from '~/composables/useTextEffect';
+
+const { textEffect1Timelines } = useTextEffect('.js--text-effect-101', false);
 
 onMounted(() => {
 
-
+  if (textEffect1Timelines.value && textEffect1Timelines.value.length > 0) {
+    textEffect1Timelines.value[0].play(); // Play the first timeline
+  }
 });
 
 </script>
