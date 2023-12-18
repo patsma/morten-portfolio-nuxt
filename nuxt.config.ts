@@ -5,7 +5,6 @@ export default defineNuxtConfig({
     plugins: [
         '~/plugins/route-cleanup.js'
     ],
-    ssr: false,
     postcss: {
         plugins: {
             tailwindcss: {},
