@@ -1,7 +1,7 @@
 <template>
   <div class="svg-border" ref="border">
     <svg class="svg-border--svg" width="100%" height="100" viewBox="0 0 400 100" preserveAspectRatio="none">
-      <path class="svg-border--curve" d="M0,0 Q200,0 400,0" fill="none" stroke="#f52e6d" stroke-width="1"/>
+      <path class="svg-border--curve" d="M0,0 Q200,0 400,0" fill="none"  stroke-width="1"/>
     </svg>
   </div>
 </template>
