@@ -30,13 +30,7 @@
       <div class="tag bg-dark-5 rounded p-1">Design systems & tokens</div>
     </template>
   </Hero>
-  <TextBiography/>
-  <TextServices/>
-  <TextClients/>
-  <TextAwards/>
-  <Experience/>
-  <Recommendations/>
-  <List/>
+
   <FooterComponent/>
   <Contact/>
 </template>

@@ -8,12 +8,7 @@
             </NuxtLink>
             <div class="nav__roles text-dark-40 js--text-slider-01 overflow-hidden text-xxs leading-[100%]">
               <ul>
-                <li>UX/UI Designer</li>
-                <li>Digital Designer</li>
-                <li>Art Director</li>
-                <li>Mentor</li>
-                <li>Visual Designer</li>
-                <li>Portfolio</li>
+                <li :key="store.currentText" ref="textElementRef">{{ store.currentText }}</li>
               </ul>
             </div>
           </div>
@@ -44,16 +39,11 @@
               <ul class="text-dark-100 js--text-slider-02 overflow-hidden text-right text-xs leading-[100%] tracking-[-0.03125rem]"
                   id="city-name">
                 <li>Tokyo, JP</li>
-                <li>New York, NY</li>
-                <li>Berlin, BE</li>
-                <li>New York, NY</li>
+
               </ul>
               <ul class="text-dark-40 js--text-slider-03 overflow-hidden text-end text-xxs leading-[100%]"
                   id="city-time">
                 <li>Jun 18, 20:00:23</li>
-                <li>Aug 2, 10:20:23</li>
-                <li>Jun 18, 20:00:23</li>
-                <li>Aug 2, 10:20:23</li>
               </ul>
             </div>
           </div>
@@ -63,39 +53,58 @@
   </header>
 </template>
 <script setup>
-import {onMounted, onUnmounted, ref} from 'vue';
 import gsap from 'gsap';
-import {MorphSVGPlugin} from 'gsap/MorphSVGPlugin';
-import useTextSlider from '~/composables/useTextSlider';
-import useThemeSwitch from '~/composables/useThemeSwitch';
-import useHeadroom from '~/composables/useHeadroom';
-import ThemeToggleSVG from "~/components/ThemeToggleSVG.vue";
+import {onMounted, ref, nextTick} from 'vue';
+import {useAnimationStore} from '@/stores/animationStore';
+import SplitText from 'gsap/SplitText';
+import {watch} from 'vue';
 
-// Initialize composable functions
-// const {play: playSlider1, progress: progressSlider1} = useTextSlider('.js--text-slider-01 li');
-// const {play: playSlider2, progress: progressSlider2} = useTextSlider('.js--text-slider-02 li');
-// const {play: playSlider3, progress: progressSlider3} = useTextSlider('.js--text-slider-03 li');
 
-const {initHeadroom, destroyHeadroom} = useHeadroom('.nav');
+const textElementRef = ref(null);
+const store = useAnimationStore();
+let mySplitText;
+let tl = gsap.timeline({repeat: -1, repeatDelay: 4});
+
+watch(() => store.currentText, (newVal, oldVal) => {
+  if (oldVal !== undefined) { // Avoid initialization trigger
+    nextTick(() => {
+      setupSplitText();
+    });
+  }
+});
+
+const setupSplitText = () => {
+  mySplitText = new SplitText(textElementRef.value, {type: "words,chars"});
+  animateText();
+};
+
+const updateTextAndAnimate = () => {
+  store.updateText();
+};
+
+
+const animateText = () => {
+  tl.clear();
+  tl.from(mySplitText.chars, {
+    duration: 4,
+    opacity: 0,
+    stagger: 0.1,
+  });
+  tl.to(mySplitText.chars, {
+    duration: 4,
+    opacity: 0,
+    stagger: 0.1,
+    onComplete: updateTextAndAnimate,
+  });
+};
+
+onMounted(() => {
+  setupSplitText();
+
+});
 
 if (process.client) {
-  gsap.registerPlugin(MorphSVGPlugin);
+  gsap.registerPlugin(SplitText);
 
 }
-onMounted(() => {
-  const {initThemeSwitch} = useThemeSwitch();
-
-  MorphSVGPlugin.convertToPath("circle, rect, ellipse, line, polygon, polyline");
-  // playSlider1();
-  // playSlider2();
-  // playSlider3();
-  initHeadroom();
-
-  initThemeSwitch();
-});
-
-onUnmounted(() => {
-
-  // destroyHeadroom();
-});
 </script>
