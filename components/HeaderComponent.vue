@@ -19,8 +19,12 @@ const {initHeadroom, destroyHeadroom} = useHeadroom('.nav');
 const textElementRef = ref(null);
 const store = useAnimationStore();
 let mySplitText;
-let tl = gsap.timeline({repeat: -1, repeatDelay: 1});
+if (process.client) {
+  let tl = gsap.timeline({repeat: -1, repeatDelay: 1});
 
+  gsap.registerPlugin(SplitText, MorphSVGPlugin);
+
+}
 
 // Reinit scrolltrigger effect - force it
 watch(() => store.currentText, (newVal, oldVal) => {
@@ -66,11 +70,7 @@ onMounted(() => {
 
 });
 
-if (process.client) {
 
-  gsap.registerPlugin(SplitText, MorphSVGPlugin);
-
-}
 </script>
 
 
