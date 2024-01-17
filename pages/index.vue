@@ -32,9 +32,8 @@
   </Hero>
   <Image/>
   <list/>
-<div class="spacer w-full h-24"></div>
+  <div class="spacer w-full h-28"></div>
   <FooterComponent/>
-
   <Contact/>
 </template>
 <script setup lang="ts">

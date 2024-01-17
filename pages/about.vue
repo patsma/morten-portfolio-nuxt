@@ -24,18 +24,43 @@
 
     </template>
   </Hero>
+  <div class="spacer w-full h-28"></div>
+
   <TextBiography/>
-  <TextServices/>
-  <TextClients/>
-  <TextAwards/>
+  <div class="spacer w-full h-14"></div>
+  <ElasticBorder/>
   <Experience/>
-  <Recommendations/>
-  <List/>
+  <div class="spacer w-full h-14"></div>
   <Image/>
-  <Video/>
+  <div class="spacer w-full h-14"></div>
+  <Image/>
+  <TextServices/>
+  <div class="spacer w-full h-28"></div>
+
+  <ElasticBorder/>
+  <div class="spacer w-full h-14"></div>
+  <div class="spacer w-full h-14"></div>
+
+  <TextClients/>
+  <div class="spacer w-full h-28"></div>
+  <ElasticBorder/>
+  <div class="spacer w-full h-14"></div>
+  <div class="spacer w-full h-14"></div>
+  <TextAwards/>
+  <div class="spacer w-full h-28"></div>
+  <ElasticBorder/>
+  <div class="spacer w-full h-14"></div>
+  <div class="spacer w-full h-14"></div>
+
+  <Recommendations/>
+  <div class="spacer w-full h-14"></div>
+  <Image/>
+  <div class="spacer w-full h-14"></div>
+  <Image/>
   <FooterComponent/>
   <Contact/>
 </template>
 <script setup lang="ts">
+import ElasticBorder from "~/components/ElasticBorder.vue";
 </script>
 
