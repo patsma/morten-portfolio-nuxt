@@ -1,6 +1,7 @@
 <script setup>
 
 import useTextEffect from '~/composables/useTextEffect';
+import ElasticBorder from "~/components/ElasticBorder.vue";
 
 const {textEffect1Timelines} = useTextEffect('.js--text-effect-102', true);
 
@@ -28,14 +29,18 @@ const {textEffect1Timelines} = useTextEffect('.js--text-effect-102', true);
       </div>
     </div>
   </section>
+  <div class="spacer w-full h-28"></div>
+  <ElasticBorder/>
+
   <section class="overflow-hidden">
     <div class="col-span-12 col-start-1 col-end-13 grid grid-cols-12">
       <div class="relative col-start-1 col-end-13 grid grid-flow-col">
+
         <div
             class="text-dark-40 peiko-400 relative grid min-w-[250vw] grid-flow-col justify-between gap-2 py-4 md:min-w-[150vw]">
-
-
           <div class="mask-wrapper">
+
+
             <div class="scroller">
               <div class="grid">お問い合わせ</div>
               <div class="grid">Kontakt mig</div>
@@ -50,4 +55,6 @@ const {textEffect1Timelines} = useTextEffect('.js--text-effect-102', true);
       </div>
     </div>
   </section>
+  <ElasticBorder/>
+
 </template>

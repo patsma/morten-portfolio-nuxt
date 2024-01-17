@@ -4,6 +4,7 @@
       <div class="col-start-2 col-end-12 grid gap-10">
         <div class="list grid">
           <div class="list__items relative grid">
+
             <div class="list__item grid justify-between py-8 md:grid-flow-col">
 
 
@@ -14,6 +15,8 @@
                 else?
               </div>
             </div>
+            <ElasticBorder/>
+
             <div class="list__item grid justify-between py-8 md:grid-flow-col">
 
 
@@ -24,6 +27,8 @@
                 online resumé
               </div>
             </div>
+            <ElasticBorder/>
+
             <div class="list__item grid justify-between py-8 md:grid-flow-col">
 
 
@@ -33,6 +38,8 @@
               </div>
               <div class="list__item-category text-dark-40 ibmplex-400 self-center text-base">My latest projects</div>
             </div>
+            <ElasticBorder/>
+
             <div class="list__item grid justify-between gap-12 py-6 text-xxs md:grid-flow-col md:gap-0">
 
 
@@ -44,9 +51,14 @@
                 Smakosz for the collaboration
               </div>
             </div>
+            <ElasticBorder/>
+
           </div>
         </div>
       </div>
     </div>
   </section>
 </template>
+<script setup lang="ts">
+import ElasticBorder from "~/components/ElasticBorder.vue";
+</script>

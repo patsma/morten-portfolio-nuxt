@@ -30,8 +30,11 @@
       <div class="tag bg-dark-5 rounded p-1">Design systems & tokens</div>
     </template>
   </Hero>
-
+  <Image/>
+  <list/>
+<div class="spacer w-full h-24"></div>
   <FooterComponent/>
+
   <Contact/>
 </template>
 <script setup lang="ts">
@@ -45,5 +48,6 @@ import Recommendations from "~/components/Recommendations.vue";
 import List from "~/components/List.vue";
 import FooterComponent from "~/components/FooterComponent.vue";
 import Contact from "~/components/Contact.vue";
+import Image from "~/components/Image.vue";
 </script>
 
