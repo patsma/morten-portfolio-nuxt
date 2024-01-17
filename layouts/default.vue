@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import {ScrollTrigger} from 'gsap/ScrollTrigger';
 import {ScrollSmoother} from 'gsap/ScrollSmoother';
 
+const {$gsap} = useNuxtApp()
 useHead({
   title: 'Morten Portfolio',
 });
@@ -15,7 +16,12 @@ let smoother;
 
 
 onMounted(() => {
-  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+  if (process.client) {
+
+    gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+
+  }
   const loaderGroup = document.querySelector(".loader-group");
   loaderGroup.classList.add("loader-group--hidden");
   setTimeout(() => {

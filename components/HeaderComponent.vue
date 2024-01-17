@@ -1,5 +1,4 @@
 <script setup>
-import gsap from 'gsap';
 import {onMounted, ref, nextTick} from 'vue';
 import {useAnimationStore} from '@/stores/animationStore';
 import SplitText from 'gsap/SplitText';
@@ -14,17 +13,13 @@ const {tokyoTime} = useTokyoTime();
 const isClient = ref(false);
 
 const {initHeadroom, destroyHeadroom} = useHeadroom('.nav');
-
+const { $gsap } = useNuxtApp()
 
 const textElementRef = ref(null);
 const store = useAnimationStore();
 let mySplitText;
-if (process.client) {
-  let tl = gsap.timeline({repeat: -1, repeatDelay: 1});
+let tl = $gsap.timeline({repeat: -1, repeatDelay: 1});
 
-  gsap.registerPlugin(SplitText, MorphSVGPlugin);
-
-}
 
 // Reinit scrolltrigger effect - force it
 watch(() => store.currentText, (newVal, oldVal) => {
@@ -66,11 +61,15 @@ onMounted(() => {
   initHeadroom();
   initThemeSwitch();
   setupSplitText();
-  isClient.value = true; // Set to true only on client-side
+
 
 });
 
+if (process.client) {
+  isClient.value = true; // Set to true only on client-side
+  $gsap.registerPlugin(SplitText, MorphSVGPlugin);
 
+}
 </script>
 
 
