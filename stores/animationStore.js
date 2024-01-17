@@ -1,9 +1,17 @@
 // stores/animationStore.js
-import { defineStore } from 'pinia';
+import {defineStore} from 'pinia';
 
 export const useAnimationStore = defineStore('animationStore', {
     state: () => ({
-        textArray: ['First', 'Second', 'Third', 'Fourth'],
+        textArray:
+            [
+                'UX/UI Designer',
+                'Digital Designer',
+                'Art Director',
+                'Mentor',
+                'Visual Designer',
+                'Portfolio'
+            ],
         currentIndex: 0,
     }),
     getters: {
@@ -12,7 +20,7 @@ export const useAnimationStore = defineStore('animationStore', {
     actions: {
         updateText() {
             this.currentIndex = (this.currentIndex + 1) % this.textArray.length;
-            console.log('Updated currentIndex:', this.currentIndex);
+            // console.log('Updated currentIndex:', this.currentIndex);
         }
     }
 });
