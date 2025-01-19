@@ -1,33 +1,10 @@
 <template>
   <Hero>
     <template #heroText>
-      <span class="text-dark-40">
-        Welcome, I am
-        <span class="text-dark-100 peiko-300">Morten</span>
-        – a
-        <span class="text-dark-100 peiko-italic-300">Danish</span>
-        <span class="text-dark-100 ibmplex-300">designer</span>
-        based in
-        <span class="text-dark-100 peiko-300">Tokyo</span>
-        approaching today’s challenges with a
-        <span class="text-dark-100 ibmplex-300">digital</span>
-        <span class="text-dark-100 peiko-italic-300">-first</span>
-        and
-        <span class="text-dark-100 ibmplex-300">user</span>
-        <span class="text-dark-100 peiko-italic-300">-centred</span>
-        mindset
-      </span>
+      <span class="text-dark-40"> Molki Design </span>
     </template>
     <template #content>
-      <div class="tag rounded p-1">Services</div>
-      <div class="tag bg-dark-5 rounded p-1">Art direction</div>
-      <div class="tag bg-dark-5 rounded p-1">Creative direction</div>
-      <div class="tag bg-dark-5 rounded p-1">Concept Development</div>
-      <div class="tag bg-dark-5 rounded p-1">Consulting & Guidance</div>
-      <div class="tag bg-dark-5 rounded p-1">User experience design (ux)</div>
-      <div class="tag bg-dark-5 rounded p-1">Digital design (UI)</div>
-      <div class="tag bg-dark-5 rounded p-1">Interactive design</div>
-      <div class="tag bg-dark-5 rounded p-1">Design systems & tokens</div>
+      <div class="tag rounded p-1">SeUrvices</div>
     </template>
   </Hero>
   <div class="spacer h-screen"></div>
